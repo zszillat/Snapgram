@@ -7,9 +7,8 @@ import { Input } from "@/components/ui/input"
 import { SignupValidation } from "@/lib/validation"
 import Loader from "@/components/shared/Loader"
 import { Link } from "react-router-dom"
-import { createUserAccount } from "@/lib/appwrite/api"
 import { useToast } from "@/hooks/use-toast"
-import { useCreateUserAccountMutation } from "@/lib/react-query/queriesAndMutations"
+import { useCreateUserAccount } from "@/lib/react-query/queriesAndMutations"
 
 
 
@@ -17,7 +16,7 @@ import { useCreateUserAccountMutation } from "@/lib/react-query/queriesAndMutati
 const SignupForm = () => {
   const { toast } = useToast();
 
-  const { mutateAsync: createUserAccount, isLoading: isCreatingUser } = useCreateUserAccountMutation();
+  const { mutateAsync: createUserAccount, isLoading: isCreatingUser } = useCreateUserAccount();
 
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
